@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { MARCAS, PLANS } from "../constants";
 import useCotizador from "../hooks/useCotizador"
 
@@ -9,8 +9,8 @@ export default function Resultado() {
 
    if (result === 0) return;
 
-   const [nombreMarca] = useCallback(MARCAS.filter(m => m.id === Number(marca)), [result]);
-   const [nombrePlan] = useCallback(PLANS.filter(p => p.id === Number(plan)), [result]);
+   const [nombreMarca] = useMemo(() => MARCAS.filter(m => m.id === Number(marca)), [result]);
+   const [nombrePlan] = useMemo(() => PLANS.filter(p => p.id === Number(plan)), [result]);
 
 
    return (
